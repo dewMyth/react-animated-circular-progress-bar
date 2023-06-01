@@ -25,6 +25,8 @@ const App = () => {
           <ChangingProgressProvider values={[0, 25, 50, 75, 100]}>
             {(value) => (
               <CircularProgressbar
+                strokeWidth={8}
+                id="curve"
                 value={value}
                 // text={`${value}%`}  // If you want to show the percentage
                 circleRatio={1}
