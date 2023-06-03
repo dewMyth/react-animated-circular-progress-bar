@@ -1,43 +1,46 @@
 import React from "react";
 
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
+import AnimatedProgressBar from "./AnimatedProgressBar";
 
-import ChangingProgressProvider from "./ChangingProgressProvider";
-import GradientSVG from "./GradientSVG";
+import "./App.css";
+import PleomaxEffect from "./PleomaxEffect";
 
 const App = () => {
-  const idCSS = "gradientColors";
   return (
     <div>
+      <PleomaxEffect />
       <h1>Animated Progress Bar</h1>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{ width: "1000px", height: "1000px" }}>
-          <GradientSVG />
-          <ChangingProgressProvider values={[0, 25, 50, 75, 100]}>
-            {(value) => (
-              <CircularProgressbar
-                strokeWidth={8}
-                id="curve"
-                value={value}
-                // text={`${value}%`}  // If you want to show the percentage
-                circleRatio={1}
-                styles={buildStyles({
-                  rotation: 7 / 8, // Start from this size of potion point, Ex: 1/8 = 45 degree, 7/8 = 315 degree(-45 degree) -> Exactly the same point we need, if u want to satrt from bottom, just put 1/2 = 180 degree
-                  strokeLinecap: "round",
-                  pathColor: `url(#${idCSS})`,
-                })}
-              />
-            )}
-          </ChangingProgressProvider>
+      <h2>React Circular Progressbar</h2>
+      <div className="container">
+        <div className="sub-container">
+          <div className="ring">
+            <AnimatedProgressBar />
+          </div>
+          <div className="node top-left">
+            {/* flex row with two columns */}
+            <div className="row">
+              <div className="text">text</div>
+              <div className="left circle"></div>
+            </div>
+          </div>
+          <div className="node top-right">
+            <div className="row">
+              <div className="right circle"></div>
+              <div className="text">text</div>
+            </div>
+          </div>
+          <div className="node bottom-right">
+            <div className="row">
+              <div className="right circle"></div>
+              <div className="text">text</div>
+            </div>
+          </div>
+          <div className="node bottom-left">
+            <div className="row">
+              <div className="text">text</div>
+              <div className="left circle"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
